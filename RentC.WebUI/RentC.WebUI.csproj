@@ -237,58 +237,12 @@
     <Compile Include="Infrastructure\Concrete\WebAuthProvider.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\DAL\Car.cs">
-      <DependentUpon>RentCModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\Coupon.cs">
-      <DependentUpon>RentCModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\Customer.cs">
-      <DependentUpon>RentCModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\Location.cs">
-      <DependentUpon>RentCModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\Permission.cs">
-      <DependentUpon>RentCModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\RentCModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RentCModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\RentCModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RentCModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\RentCModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RentCModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\Reservation.cs">
-      <DependentUpon>RentCModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\ReservationStatus.cs">
-      <DependentUpon>RentCModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\Role.cs">
-      <DependentUpon>RentCModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DAL\User.cs">
-      <DependentUpon>RentCModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Security\Attribute\AdultPerson.cs" />
     <Compile Include="Models\Security\Attribute\RealPerson.cs" />
     <Compile Include="Models\Security\Attribute\SinceToday.cs" />
     <Compile Include="Models\Security\Attribute\TwoMonthsFromNow.cs" />
     <Compile Include="Models\Security\CustomMembershipProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RCWebService.asmx.cs">
-      <DependentUpon>RCWebService.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="VIewModels\CarRegisterEditVM.cs" />
     <Compile Include="VIewModels\ChangePasswordVM.cs" />
     <Compile Include="VIewModels\CouponRegisterEditVM.cs" />
@@ -323,28 +277,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\DAL\RentCModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RentCModel.Context.cs</LastGenOutput>
-      <DependentUpon>RentCModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\DAL\RentCModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RentCModel.edmx</DependentUpon>
-      <LastGenOutput>RentCModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="RCWebService.asmx" />
     <Content Include="Infrastructure\Scripts\bootstrap.bundle.js" />
     <Content Include="Infrastructure\Scripts\bootstrap.bundle.min.js" />
     <Content Include="Infrastructure\Scripts\bootstrap.js" />
     <Content Include="Infrastructure\Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\DAL\RentCModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RentCModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DAL\RentCModel.edmx.diagram">
-      <DependentUpon>RentCModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Infrastructure\Scripts\custom\ajax_to_server.js" />
     <Content Include="Infrastructure\Scripts\custom\get_from_server.js" />
     <Content Include="Infrastructure\Scripts\esm\popper-utils.js" />
@@ -453,6 +389,7 @@
     <Content Include="Infrastructure\Scripts\umd\popper.min.js" />
     <Content Include="Scripts\bootstrap-switch.js" />
     <Content Include="Scripts\bootstrap-switch.min.js" />
+    <Content Include="Scripts\GetCarList.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -511,9 +448,11 @@
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Account\Home.cshtml" />
     <Content Include="Views\Account\Alter.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\DAL\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -221,5 +221,33 @@ namespace RentC.WebUI.Controllers
             }
             return View(model);
         }
+
+        [Route("details/{id:int?}")]
+        public ActionResult Details(int? id)
+        {
+            if (id != null)
+            {
+                var Customer = _customer_repository.All
+                    .SingleOrDefault(c => c.CustomerID == id);
+             
+                if (Customer != null)
+                {
+                    var month_ago = DateTime.Now.AddMonths(-1);
+                    var RentsThisMonth = Customer.Reservations.Select(rent =>
+                                                rent.StartDate > month_ago
+                                                && rent.StartDate <= DateTime.Now
+                                                && (rent.ReservationStatus.Name == "OPEN"
+                                                        || rent.ReservationStatus.Name == "CLOSED")
+                                                   ).Count();
+
+                    ViewBag.Membership = (RentsThisMonth >= 4) ? "Gold"
+                                        : (RentsThisMonth >= 2) ? "Silver"
+                                        : null;
+
+                    return View(Customer);
+                }
+            }
+            return HttpNotFound();
+        }
     }
 }

@@ -19,8 +19,13 @@ namespace RentC.WebUI.Models.Security.Attribute
             if (model.EndDate == null)
                 return new ValidationResult("End date is required.");
 
+
+
             if (model.StartDate < DateTime.Now)
                 return new ValidationResult("Start date can't be in the past.");
+
+            if (model.StartDate > DateTime.Now.AddDays(10))
+                return new ValidationResult("Car can be booked maximum 10 days in advance.");
 
             if (model.StartDate > model.EndDate)
                 return new ValidationResult("Start date must be less than end date.");
@@ -46,8 +51,13 @@ namespace RentC.WebUI.Models.Security.Attribute
             if (model.EndDate == null)
                 return new ValidationResult("End date is required.");
 
+
+
             if (model.StartDate < DateTime.Now)
                 return new ValidationResult("Start date can't be in the past.");
+
+            if (model.StartDate > DateTime.Now.AddDays(10))
+                return new ValidationResult("Car can be booked maximum 10 days in advance.");
 
             if (model.StartDate > model.EndDate)
                 return new ValidationResult("Start date must be less than end date.");

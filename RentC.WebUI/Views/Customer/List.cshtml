@@ -41,7 +41,8 @@
         @Html.DisplayFor(modelItem => item.Location)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }, new { @class = "badge badge-primary"}) |
+        @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }, new { @class = "badge badge-primary" }) |
+        @Html.ActionLink("Details", "Details", new { id = item.CustomerID }, new { @class = "badge badge-info" }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID }, new { @class = "badge badge-danger" })
     </td>
 </tr>

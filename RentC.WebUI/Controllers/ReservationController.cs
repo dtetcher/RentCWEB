@@ -78,15 +78,18 @@ namespace RentC.WebUI.Controllers
                 }
 
                 // Check if customer exists
-                var CustomerExists = _customer_repository.All
-                            .Any(cust => cust.CustomerID == model.CustomerID);
+                var CustomerExistsAndHaveNoRents = _customer_repository.All
+                            .Any(cust => 
+                                    cust.CustomerID == model.CustomerID 
+                                 && cust.Reservations.Where(rent => rent.ReservStatsID == 1).Count() == 0);
 
-                if (!CustomerExists)
+                if (!CustomerExistsAndHaveNoRents)
                 {
-                    ModelState.AddModelError("CustomerID", "Customer does not exist.");
+                    ModelState.AddModelError("CustomerID", "Customer does not exist or have an open rent.");
                     return View(model);
                 }
                     
+
                 // Check if coupon code exists
                 if (model.CouponCode != null)
                 {

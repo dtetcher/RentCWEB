@@ -1,0 +1,42 @@
+﻿@model RentC.WebUI.Models.DAL.Customer
+
+@{
+    ViewBag.Title = string.Format("{0} - Details", Model.Name);
+    var status = ViewBag.Membership as string;
+    var badge_color = (status == "Silver") ? "dark" : (status == "Gold") ? "warning" : null;
+}
+
+<div>
+    <h4>@Model.Name <a class="badge badge-@badge_color" style="color:#b3b3b3">@status</a></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Date of Birth
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-outline-warning" }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID }, new { @class = "btn btn-info" })
+</p>

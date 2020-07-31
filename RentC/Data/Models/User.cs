@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RentC.WebUI.Models.DAL
+namespace RentC.Data.Models
 {
     using System;
     using System.Collections.Generic;

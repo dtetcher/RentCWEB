@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RentC.WebUI.Models.DAL
+namespace RentC.Data.Models
 {
     using System;
     using System.Data.Entity;
@@ -22,13 +22,9 @@ namespace RentC.WebUI.Models.DAL
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Car>()
-                .HasMany<Reservation>(car => car.Reservations)
-                .WithRequired()
-                .WillCascadeOnDelete(false);
-
+            throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Car> Cars { get; set; }
         public virtual DbSet<Coupon> Coupons { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }

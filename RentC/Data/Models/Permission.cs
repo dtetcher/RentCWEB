@@ -7,25 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RentC.WebUI.Models.DAL
+namespace RentC.Data.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class Permission
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
+        public Permission()
         {
-            this.Reservations = new HashSet<Reservation>();
+            this.Roles = new HashSet<Role>();
         }
     
-        public int CustomerID { get; set; }
+        public int PermissionID { get; set; }
         public string Name { get; set; }
-        public System.DateTime BirthDate { get; set; }
-        public string Location { get; set; }
+        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }

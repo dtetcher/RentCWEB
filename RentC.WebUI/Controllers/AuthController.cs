@@ -76,7 +76,7 @@ namespace RentC.WebUI.Controllers
                     );
 
                     HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(ticket));
-                    Session["USER_ID"] = user.UserID.ToString();
+                    Session["USER_ID"] = user.UserID;
 
                     Response.SetCookie(cookie);
 

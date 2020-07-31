@@ -7,24 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RentC.WebUI.Models.DAL
+namespace RentC.Data.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class ReservationStatus
+    public partial class Location
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ReservationStatus()
+        public Location()
         {
-            this.Reservations = new HashSet<Reservation>();
+            this.Cars = new HashSet<Car>();
         }
     
-        public byte ReservStatsID { get; set; }
+        public int LocationZipCode { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual ICollection<Car> Cars { get; set; }
     }
 }

@@ -1,34 +1,82 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-@Scripts.Render("~/Scripts/custom/get_from_server.js")
+
+@Scripts.Render("~/Scripts/GetCarList.js")
 
     <div class="jumbotron">
         <h1>RentC</h1>
         <p class="lead">RentC - your brand new solution to store and manage data.</p>
-        @if (true)
-        {
-            
-        }
-        @if (HttpContext.Current.Session["perms"] != null)
-        {
-
-            @Html.DisplayText(HttpContext.Current.Session["Permissions"].ToString());
-        }
-
     </div>
 <div class="row">
     <div class="col-md-4">
-        @if (TempData["LoginFunction"] != null)
+        @if (Request.IsAuthenticated)
         {
-            <script type="text/javascript">
-                @Html.Raw(TempData["LoginFunction"])
-            </script>
-        }
-        <h2>Welcome to RentC</h2>
         <p>
-            Your brand new solution
+            @*<button class="btn btn-dark" onclick="get_car_list('recent')">Recent Rents</button>
+        <button class="btn btn-dark" onclick="get_car_list('popular')">Popular cars</button>
+        <button class="btn btn-dark" onclick="get_car_list('notpopular')">Hot offers</button>*@
+            @Html.ActionLink("Recent rents", "Index", "Home", new { selector = "recent" }, new { @class = "btn btn-dark" })
+            @Html.ActionLink("Popular cars", "Index", "Home", new { selector = "popular" }, new { @class = "btn btn-dark" })
+            @Html.ActionLink("Not popular", "Index", "Home", new { selector = "notpopular" }, new { @class = "btn btn-danger" })
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
+            if (ViewBag.Cars != null)
+            {
+                var Cars = ViewBag.Cars as List<RentC.WebUI.Models.DAL.Car>;
+                <h2>@ViewBag.Header</h2>
+                <table class="table">
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Plate
+                        </th>
+                        <th>
+                            Manufacturer
+                        </th>
+                        <th>
+                            Model
+                        </th>
+                        <th>
+                            Daily Price
+                        </th>
+                        <th>
+                            Location
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var car in Cars)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => car.CarID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => car.Plate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => car.Manufacturer)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => car.Model)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(p => car.PricePerDay)$
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => car.Location.Name)
+                            </td>
+                            <td>
+                                @*@Html.ActionLink("Edit", "Edit", new { id = car.CarID }, new { @class = "badge badge-primary" }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = car.CarID }, new { @class = "badge badge-danger" })*@
+                            </td>
+                        </tr>
+                    }
+                    
+                </table>
+            }
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        }</div>
 </div>

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentC.WebUI", "RentC.WebUI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentC.Tests", "RentC.Tests\RentC.Tests.csproj", "{D2BCFB1E-D431-4526-9BF7-1F153C3B64B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentC", "..\RentC\RentC.csproj", "{38FF011D-9B8D-4ECB-94DF-423AF2D68988}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{038B860F-801F-469A-925A-848566B03B90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +23,10 @@ Global
 		{D2BCFB1E-D431-4526-9BF7-1F153C3B64B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2BCFB1E-D431-4526-9BF7-1F153C3B64B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2BCFB1E-D431-4526-9BF7-1F153C3B64B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{038B860F-801F-469A-925A-848566B03B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{038B860F-801F-469A-925A-848566B03B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{038B860F-801F-469A-925A-848566B03B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{038B860F-801F-469A-925A-848566B03B90}.Release|Any CPU.Build.0 = Release|Any CPU
 		{38FF011D-9B8D-4ECB-94DF-423AF2D68988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{38FF011D-9B8D-4ECB-94DF-423AF2D68988}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38FF011D-9B8D-4ECB-94DF-423AF2D68988}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -23,3 +23,23 @@
     border-radius: 50%;
     display: inline-block;
 }
+
+.badge-silver {
+    color: #1b1917;
+    background-color: #bfbfbf;
+}
+
+.badge-gold {
+    color: #1b1917;
+    background-color: #ffd633;
+}
+
+a.badge-success:hover, a.badge-success:focus {
+    color: #fff;
+    background-color: #1e7e34;
+}
+
+a.badge-success:focus, a.badge-success.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+}
