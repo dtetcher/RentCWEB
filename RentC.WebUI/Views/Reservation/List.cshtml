@@ -1,0 +1,87 @@
+﻿@model IEnumerable<RentC.WebUI.Models.DAL.Reservation>
+
+@{
+    ViewBag.Title = "Reservation List";
+}
+
+<h2>Reservation List</h2>
+
+<p>
+    @Html.ActionLink("Add New", "Register", null, new { @class = "badge badge-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Car
+        </th>
+        <th>
+            Customer
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Start Date
+        </th>
+        <th>
+            End Date
+        </th>
+        <th>
+            Location
+        </th>
+        <th>
+            Coupon Code
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    var status= item.ReservStatsID == 1 ? "success" 
+        : item.ReservStatsID == 2 ? "dark" 
+        : item.ReservStatsID == 3 ? "danger" : "default";
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Car.Plate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Name)
+        </td>
+        <td>
+            <div class="p-1 mb-1 bg-@status text-white rounded text-xl-center">
+                @Html.DisplayFor(modelItem => item.ReservationStatus.Name)
+            </div>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CouponCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit",
+                    new { cust_id = item.CustomerID,
+                        car_id = item.CarID,
+                        status = item.ReservationStatus.Name,
+                        startDate = item.StartDate.ToString("MM-dd-yyyy"),
+                        endDate = item.EndDate.ToString("MM-dd-yyyy")
+                    }, new { @class = "badge badge-primary" }) |
+
+            @Html.ActionLink("Delete", "Delete",
+           new { cust_id = item.CustomerID,
+               car_id = item.CarID,
+               status = item.ReservationStatus.Name,
+               startDate = item.StartDate.ToString("MM-dd-yyyy"),
+               endDate = item.EndDate.ToString("MM-dd-yyyy")
+           }, new { @class = "badge badge-danger" })
+        </td>
+    </tr>
+}
+
+</table>

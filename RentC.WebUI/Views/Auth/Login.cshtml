@@ -1,0 +1,57 @@
+﻿@model RentC.WebUI.Models.UserLoginVM
+
+@{
+    var ErrorMessage = TempData["ErrorMessage"] as string;
+    ViewBag.Title = "Login";
+}
+
+@Scripts.Render("~/Scripts/custom/get_from_server.js")
+
+    <div class="container-fluid">
+        <h2>Login Page</h2>
+
+        @if (ErrorMessage != null)
+        {
+            <div class="alert-danger">
+                @ErrorMessage
+            </div>
+        }
+
+        @if (TempData["LogoutFunction"] != null)
+        {
+            <script type="text/javascript">
+               @Html.Raw(TempData["LogoutFunction"]);
+            </script>
+        }
+
+        @using (Html.BeginForm("Login_", "Auth", new { ReturnUrl = ViewBag.ReturnUrl }))
+        {
+            @Html.AntiForgeryToken();
+            @Html.ValidationSummary();
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserID, new { @class = "text-uppercase font-weight-bolder" })
+                <div class="">
+                    @Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, new { @class = "text-uppercase font-weight-bolder" })
+                <div class="rounded-pill">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group ">
+                @Html.LabelFor(model => model.RememberMe, new { @class = "font-italic" })
+                @Html.CheckBoxFor(model => model.RememberMe)
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Log in</button>
+            </div>
+        }
+    </div>
+

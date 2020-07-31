@@ -1,0 +1,54 @@
+﻿@model IEnumerable<RentC.WebUI.Models.DAL.User>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Register", "Register", null, new { @class = "badge badge-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            User ID
+        </th>
+        <th>
+            Password
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Role
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var status = Html.Raw((item.Enabled) ? "<span class=\"dot-green\"></span>" : "<span class=\"dot-red\"></span>");
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                <div>
+                    @status
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UserID }, new { @class = "badge badge-primary" }) |
+                @Html.ActionLink("Change status", "Alter", new { id = item.UserID }, new { @class = "badge badge-warning" })
+            </td>
+        </tr>
+    }
+
+</table>

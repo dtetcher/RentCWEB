@@ -1,0 +1,49 @@
+﻿@model RentC.WebUI.Models.DAL.User
+
+@{
+    ViewBag.Title = string.Format("User #{0} - Status", Model.UserID);
+    var status = Html.Raw((Model.Enabled) ? "<span class=\"dot-green\"></span>" : "<span class=\"dot-red\"></span>");
+    var alter = (Model.Enabled ? "disable" : "enable");
+}
+
+
+<h3>Are you sure you want to @alter this User?</h3>
+<div>
+    <h4>User #@Model.UserID</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Enabled)
+        </dt>
+
+        <dd>
+            @status
+        </dd>
+
+        <dt>
+            Role
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("Alter_", "User", new { id = Model.UserID, status = !Model.Enabled })) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-outline-warning" }) |
+    <input type="submit" value="@alter.ToUpper()" class="btn btn-primary" />
+</div>
+    }
+</div>

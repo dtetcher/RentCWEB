@@ -1,0 +1,89 @@
+﻿@model RentC.WebUI.Models.DAL.Reservation
+
+@{
+    ViewBag.Title = "Delete Rent";
+    var status = Model.ReservStatsID == 1 ? "success"
+        : Model.ReservStatsID == 2 ? "dark"
+        : Model.ReservStatsID == 3 ? "danger" : "default";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this Reservation?</h3>
+<div>
+    <h4>Reservation Car #@Model.CarID Customer #@Model.CustomerID</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            <div class="p-1 mb-1 bg-@status text-white rounded text-xl-center">
+                @Html.DisplayFor(model => model.ReservationStatus.Name)
+            </div>
+        </dd>
+        <dt>
+            Plate
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.Plate)
+        </dd>
+
+        <dt>
+            Customer
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Name)
+        </dd>
+
+        <dt>
+            Start Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            End Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            Coupon Code
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CouponCode)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("Delete_", "Reservation"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.CarID)
+        @Html.HiddenFor(model => model.CustomerID)
+        @Html.HiddenFor(model => model.ReservStatsID)
+        @Html.HiddenFor(model => model.StartDate)
+        @Html.HiddenFor(model => model.EndDate)
+
+<div class="form-actions no-color">
+    <div>
+        @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-outline-warning" })
+    </div> |
+    <input type="submit" value="Delete" class="btn btn-primary" />
+</div>
+    }
+</div>
+

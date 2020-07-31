@@ -1,0 +1,70 @@
+﻿@model RentC.WebUI.VIewModels.CarRegisterEditVM
+@{
+    ViewBag.Title = string.Format("{0} Update", Model.Plate);
+}
+
+
+@using (Html.BeginForm(new { returnUrl = ViewBag.ReturnUrl }))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.CarID)
+    <div class="container text-left">
+        <h2>@string.Format("{0} {1}, {2}", Model.Manufacturer, Model.Model, Model.Plate)</h2>
+        <hr />
+
+        <div class="input-group mb-3">
+            @Html.LabelFor(model => model.Plate, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Plate, new { htmlAttributes = new { @class = "form-control", placeholder = "AA 11 AAA" } })
+                @Html.ValidationMessageFor(model => model.Plate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            @Html.LabelFor(model => model.Manufacturer, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Manufacturer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Manufacturer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            @Html.LabelFor(model => model.DailyPrice, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DailyPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DailyPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <hr />
+        <div class="input-group mb-3">
+            @Html.LabelFor(model => model.LocationZipCode, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.LocationZipCode, Model.Locations, new { @class = "form-control", placeholder = "Name Surname" })
+                @Html.ValidationMessageFor(model => model.LocationZipCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="pl-24 col-md-10">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-outline-warning" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

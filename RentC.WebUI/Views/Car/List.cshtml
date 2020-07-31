@@ -1,0 +1,62 @@
+﻿@model IEnumerable<RentC.WebUI.Models.DAL.Car>
+
+@{
+    ViewBag.Title = "Car List";
+}
+
+<h2>Car List</h2>
+
+<p>
+    @Html.ActionLink("Add New", "Register", null, new { @class = "badge badge-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Plate
+        </th>
+        <th>
+            Manufacturer
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Daily Price
+        </th>
+        <th>
+            Location
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CarID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Plate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Manufacturer)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Model)
+    </td>
+    <td>
+        @Html.DisplayFor(p => item.PricePerDay)$
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Location.Name)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.CarID }, new { @class = "badge badge-primary" }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.CarID }, new { @class = "badge badge-danger" })
+    </td>
+</tr>
+}
+
+</table>

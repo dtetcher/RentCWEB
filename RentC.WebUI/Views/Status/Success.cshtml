@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Success";
+}
+<h2>Success</h2>
+
+<div class="jumbotron">
+    <p class="text-success h1">@ViewBag.StatusMessage</p>
+
+    @Html.ActionLink("Go back", (string)ViewBag.ActionName, (string)ViewBag.ControllerName, null, new { @class = "btn btn-outline-dark ml-5" })
+</div>
+

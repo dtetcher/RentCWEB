@@ -1,0 +1,75 @@
+﻿@model RentC.WebUI.VIewModels.ReservationRegisterVM
+@{
+    ViewBag.Title = "New Reservation";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true, "",new { @class = "control-label" } )
+
+    <div class="container text-left">
+        <h4>Register Reservation</h4>
+        <hr />
+
+        <div class="input-group mb-3">
+            @Html.LabelFor(model => model.CarID, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CarID, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.CarID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            @Html.LabelFor(model => model.CustomerID, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustomerID, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", placeholder = "mm-dd-yyyy" } })
+                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "mm-dd-yyyy" } })
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Location, Model.Locations, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            @Html.LabelFor(model => model.CouponCode, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CouponCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CouponCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 pl-24">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-outline-warning" })
+</div>
+

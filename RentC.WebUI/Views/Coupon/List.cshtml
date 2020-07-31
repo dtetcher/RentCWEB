@@ -1,0 +1,45 @@
+﻿@model IEnumerable<RentC.WebUI.Models.DAL.Coupon>
+
+@{
+    ViewBag.Title = "Coupon List";
+}
+
+<h2>Coupon List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Register", null, new { @class = "badge badge-success"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Code
+        </th>
+        @*<th>
+            Description
+        </th>*@
+        <th>
+            Discount
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CouponCode)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Discount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { code = item.CouponCode }, new { @class = "badge badge-primary" }) |
+            @Html.ActionLink("Details", "Details", new { code = item.CouponCode}, new { @class = "badge badge-info" }) |
+            @Html.ActionLink("Delete", "Delete", new { code = item.CouponCode }, new { @class = "badge badge-danger" })
+        </td>
+    </tr>
+}
+
+</table>

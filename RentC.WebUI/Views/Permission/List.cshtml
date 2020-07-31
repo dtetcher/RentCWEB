@@ -1,0 +1,44 @@
+﻿@model IEnumerable<RentC.WebUI.Models.DAL.Permission>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Add New", "Register", null, new { @class = "badge badge-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.PermissionID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.PermissionID }, new { @class = "badge badge-primary" }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.PermissionID }, new { @class = "badge badge-danger" })
+    </td>
+</tr>
+}
+
+</table>

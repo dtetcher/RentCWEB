@@ -1,0 +1,25 @@
+﻿.pl-24 {
+    padding-left: 24rem !important;
+}
+
+.mr-12 {
+    margin-right: 21rem !important;
+}
+
+.dot-red {
+    padding-left: 6px;
+    height: 10px;
+    width: 10px;
+    background-color: #4d0000;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-green {
+    padding-left: 6px;
+    height: 10px;
+    width: 10px;
+    background-color: #009933;
+    border-radius: 50%;
+    display: inline-block;
+}

@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Home";
+    var permissions = Session["permissions"] as List<Permission>;
+}
+
+<h2>@ViewBag.Title</h2>
+<ul>
+    @foreach (var p in permissions)
+    {
+        <li class="text-primary">@p.PermissionID</li>
+        <li class="text-secondary">@p.Description</li>
+    }
+</ul>
